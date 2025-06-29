@@ -1,7 +1,5 @@
-// src/components/Dashboard.js
 import React from 'react';
 import { 
-  Grid, 
   Typography, 
   Box,
   Paper,
@@ -17,42 +15,109 @@ const Dashboard = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ flexGrow: 1, p: isMobile ? 2 : 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 600 }}>
-        Real-Time Dashboard
-      </Typography>
+    <Box sx={{ flexGrow: 1, p: isMobile ? 2 : 3}}>
+      {/* Header Section */}
+      <Box sx={{ mb: 4, textAlign: 'center' }}>
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          sx={{ 
+            fontWeight: 700, 
+            color: '#1565c0',
+            mb: 1
+          }}
+        >
+          Real-Time Dashboard
+        </Typography>
+        <Typography variant="subtitle1" sx={{ color: '#666' }}>
+          Complete overview of your inventory management system
+        </Typography>
+      </Box>
       
-      <Grid container spacing={3}>
-        {/* Inventory Summary */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 2, height: '100%' }}>
-            <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
-              Inventory Overview
-            </Typography>
-            <InventoryList compact />
-          </Paper>
-        </Grid>
+      {/* Single Column Layout */}
+      <Box sx={{ maxWidth: '800px', mx: 'auto' }}>
+        
+        {/* 1. Inventory Overview Section */}
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            p: 4, 
+            mb: 4,
+             borderRadius: 4,
+            borderLeft: '6px solid #2196f3'
+          }}
+        >
+          <Typography 
+            variant="h5" 
+            gutterBottom 
+            sx={{ 
+              fontWeight: 600,
+              color: '#1565c0',
+              mb: 3,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}
+          >
+            📦 Inventory Overview
+          </Typography>
+          <InventoryList compact />
+        </Paper>
 
-        {/* Delivery Agents */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
-              Active Deliveries
-            </Typography>
-            <DeliveryTracker compact />
-          </Paper>
-        </Grid>
+        {/* 2. Active Deliveries Section */}
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            p: 4, 
+            mb: 4,
+            borderRadius: 3,
+            borderLeft: '6px solid #4caf50'
+          }}
+        >
+          <Typography 
+            variant="h5" 
+            gutterBottom 
+            sx={{ 
+              fontWeight: 600,
+              color: '#388e3c',
+              mb: 3,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}
+          >
+            🚚 Active Deliveries
+          </Typography>
+          <DeliveryTracker compact />
+        </Paper>
 
-        {/* Alerts */}
-        <Grid item xs={12}>
-          <Paper elevation={3} sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom sx={{ mb: 2 }}>
-              Recent Alerts
-            </Typography>
-            <Alerts />
-          </Paper>
-        </Grid>
-      </Grid>
+        {/* 3. Alerts Section */}
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            p: 4,
+            borderRadius: 3,
+            borderLeft: '6px solid #ff9800'
+          }}
+        >
+          <Typography 
+            variant="h5" 
+            gutterBottom 
+            sx={{ 
+              fontWeight: 600,
+              color: '#f57c00',
+              mb: 3,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2
+            }}
+          >
+            🔔 Recent Alerts & Notifications
+          </Typography>
+          <Alerts />
+        </Paper>
+
+      </Box>
     </Box>
   );
 };
